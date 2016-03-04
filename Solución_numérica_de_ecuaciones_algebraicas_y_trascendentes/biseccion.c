@@ -16,7 +16,7 @@ float biseccion(float p, float q, float tol, float error,int maxit); //Algoritmo
 float f_x(float x); //Funcion a evaluar
 
 
-//Funcion ejercico : x³+8x³+3x-6 
+//Funcion ejercico : x³+8x²+3x-6 
 // Criterio de convergencia : 0.001 y criterio de exactitud : 0.001
 //Intervalo [0,1]
 // Maximo de iteraciones : 30
@@ -41,7 +41,7 @@ int main(){
 	return 0;
 	}
 float f_x(float x){
-	 return pow(x,3)+ (8*pow(x,3))+ (3*x)-6;
+	 return pow(x,3)+ (8*pow(x,2))+ (3*x)-6;
 	}
 float biseccion(float p, float q, float tol, float error, int maxit){
 	 float FC, FP, FQ, c ; 
@@ -50,13 +50,14 @@ float biseccion(float p, float q, float tol, float error, int maxit){
 	 float epse = 100;
 	 printf("\n i \t a \t b \t raiz<aproximada> \t f<c> \t EpsC \t EpsE ");
 	 for(i=0; i <= maxit;i++){
-		 printf("\n %i %f %f %f \t\t\t  %f %f %f",i,p,q,c,f_x(c),epsc,epse);
+		 
 		 FP = f_x(p);
 		 FQ = f_x(q);
 		 c = (p+q)/2;
 		 FC = f_x(c);
 		 epsc = fabs(f_x(c));
 		 epse = fabs(p-q);
+		 printf("\n %i %f %f %f \t\t\t  %f %f %f",i,p,q,c,f_x(c),epsc,epse);
 		 if( epsc < error){
 			 return c ;
 		 }
@@ -74,9 +75,10 @@ float biseccion(float p, float q, float tol, float error, int maxit){
 						}
 					 }
 			 }
-		 
+		  
 		 
 		 }
+		 
 	return c;
 	}
 
